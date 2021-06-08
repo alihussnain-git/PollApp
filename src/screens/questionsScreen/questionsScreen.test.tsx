@@ -57,5 +57,7 @@ describe('QuestionsScreen', function () {
     expect(getByTestId('flatList')).not.toBeUndefined();
     const itemQuestion = getByText('Best Social Media App ?');
     expect(itemQuestion).not.toBeUndefined();
+    fireEvent.press(itemQuestion);
+    expect(mockNavigate).toHaveBeenCalledWith('QuestionDetail', { questionId: question.url });
   });
 });

@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/core';
 import React, { useEffect, useState } from 'react';
 import {
   View,
@@ -21,6 +22,7 @@ const QuestionsScreen = () => {
     ({ questionState }) => questionState,
   );
   const dispatch = useDispatch();
+  const navigation = useNavigation();
 
   useEffect(() => {
     dispatch(fetchQuestions());
@@ -59,7 +61,7 @@ const QuestionsScreen = () => {
           renderItem={({ item }) => (
             <QuestionItem
               questionObj={item}
-              onPress={() => {}}
+              onPress={() => navigation.navigate('QuestionDetail', { questionId: item.url })}
             />
           )}
           keyExtractor={(item, index) => index.toString()}

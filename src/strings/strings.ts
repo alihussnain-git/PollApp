@@ -5,6 +5,8 @@ const Strings = {
   continue: 'Continue',
   questions: 'Questions',
   pullToRefresh: 'Pull to Refresh',
+  questionDetail: 'Poll',
+  done: 'Done',
 };
 
 export default Strings;
