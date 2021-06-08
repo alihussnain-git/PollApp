@@ -1,4 +1,5 @@
 import * as EntryPointAPI from './entryPoint';
+import * as QuestionAPI from './questions';
 import { ApiResponse, ApisauceInstance, create, HEADERS } from 'apisauce';
 import { defaultDomain } from './environment';
 let api: ApisauceInstance;
@@ -83,4 +84,4 @@ export namespace API {
   };
 }
 
-export { EntryPointAPI };
+export { EntryPointAPI, QuestionAPI };

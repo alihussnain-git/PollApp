@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/core';
 import React, { useEffect } from 'react';
 import { View, Text, TouchableOpacity, Image } from 'react-native';
 import { useDispatch } from 'react-redux';
@@ -9,6 +10,7 @@ import Strings from '../../strings/strings';
 
 const LaunchScreen = () => {
   const dispatch = useDispatch();
+  const navigation = useNavigation();
 
   useEffect(() => {
     dispatch(fetchEntryPoint());
@@ -25,7 +27,7 @@ const LaunchScreen = () => {
       <Text style={styles.description}>{Strings.launchNote}</Text>
       <TouchableOpacity
         style={[styles.button, appStyles.centerAlignContent]}
-        onPress={() => {}}>
+        onPress={() => navigation.navigate('QuestionsScreen')}>
         <Text style={{ color: Theme.colors.white }}>{Strings.continue}</Text>
       </TouchableOpacity>
     </View>
