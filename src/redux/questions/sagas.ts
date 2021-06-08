@@ -30,6 +30,18 @@ export function* voteOnChoice(choiceId: string): SagaIterator<Choice> {
   return choice;
 }
 
+export function* createQuestion(question: string, choices: string[]): SagaIterator<Question> {
+  const entryPointState: EntryPointState = yield select(getEntryPointState);
+  const { questions_url } = entryPointState.entryPointUrl;
+  const questionObj: Question = yield call(
+    QuestionAPI.postQuestion,
+    questions_url,
+    question,
+    choices,
+  );
+  return questionObj;
+}
+
 export function* questionActionWatcher() {
   yield takeEvery(FETCH_QUESTIONS, getQuestions);
 }

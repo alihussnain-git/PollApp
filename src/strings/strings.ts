@@ -7,6 +7,9 @@ const Strings = {
   pullToRefresh: 'Pull to Refresh',
   questionDetail: 'Poll',
   done: 'Done',
+  addQuestion: 'Create Poll',
+  note: 'Note: Minimum two choices required to create a Poll.',
+  post: 'Post',
 };
 
 export default Strings;

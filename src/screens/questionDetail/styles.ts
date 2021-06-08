@@ -6,7 +6,6 @@ const styles = StyleSheet.create({
   },
   progressIndicator: {
     alignSelf: 'center',
-    marginTop: 16,
   },
   questionLabel: {
     color: Theme.colors.black,

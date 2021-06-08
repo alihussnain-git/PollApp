@@ -5,11 +5,13 @@ import QuestionsScreen from '../screens/questionsScreen/questionsScreen';
 import LaunchScreen from '../screens/launchScreen/launchScreen';
 import QuestionDetail from '../screens/questionDetail/questionDetail';
 import Theme from '../styles/theme';
+import CreateQuestion from '../screens/createQuestion/createQuestion';
 import Strings from '../strings/strings';
 export type RootStackParamList = {
   LaunchScreen: undefined;
   QuestionsScreen: undefined;
   QuestionDetail: { questionId: string };
+  CreateQuestion: undefined;
 };
 
 const Stack = createStackNavigator<RootStackParamList>();
@@ -41,6 +43,15 @@ const StackNavigator = () => {
         }}
         name='QuestionDetail'
         component={QuestionDetail}
+      />
+      <Stack.Screen
+        options={{
+          title: Strings.addQuestion,
+          headerBackTitleVisible: false,
+          headerTintColor: Theme.colors.black,
+        }}
+        name='CreateQuestion'
+        component={CreateQuestion}
       />
     </Stack.Navigator>
   );

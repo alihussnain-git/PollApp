@@ -3,7 +3,9 @@ import React, { useEffect, useState } from 'react';
 import {
   View,
   FlatList,
+  Text,
   RefreshControl,
+  TouchableOpacity,
   ActivityIndicator,
 } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
@@ -28,7 +30,6 @@ const QuestionsScreen = () => {
     dispatch(fetchQuestions());
   }, [dispatch]);
 
-
   useEffect(() => {
     if (!loading) {
       setIsRefreshing(false);
@@ -41,10 +42,9 @@ const QuestionsScreen = () => {
   };
 
   const isLoading = loading && !isRefreshing;
-  
   return (
     <View style={[appStyles.defaultFlex, { backgroundColor: Theme.colors.lightGrey }]}>
-      {isLoading? (
+      {isLoading ? (
         <ActivityIndicator
           testID={'loadingIndicator'}
           style={styles.progressIndicator}
@@ -58,10 +58,12 @@ const QuestionsScreen = () => {
           style={styles.flatList}
           data={questions}
           contentContainerStyle={styles.flatListContainer}
-          renderItem={({ item }) => (
+          renderItem={({ item, index }) => (
             <QuestionItem
               questionObj={item}
-              onPress={() => navigation.navigate('QuestionDetail', { questionId: item.url })}
+              onPress={() => 
+                navigation.navigate('QuestionDetail', { questionId: item.url })
+              }
             />
           )}
           keyExtractor={(item, index) => index.toString()}
@@ -71,10 +73,21 @@ const QuestionsScreen = () => {
               onRefresh={() => onRefresh()}
               title={Strings.pullToRefresh}
               tintColor={Theme.colors.grey}
+              titleColor={Theme.colors.grey}
             />
           }
         />
       )}
+      <TouchableOpacity
+        activeOpacity={0.8}
+        onPress={() => {
+          navigation.navigate('CreateQuestion');
+        }}
+        style={styles.floatingButtonPosition}>
+        <View style={styles.floatingButton}>
+          <Text style={styles.plusLabel}>+</Text>
+        </View>
+      </TouchableOpacity>
     </View>
   );
 };

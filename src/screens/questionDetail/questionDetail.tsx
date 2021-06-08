@@ -56,7 +56,7 @@ const QuestionDetail: React.FC<QuestionDetailProps> = ({ navigation, route }) =>
             disabled={isChoiceLoading}
             style={[appStyles.rowDirection, styles.questionSelector]}
             onPress={() => voteForChoice(choice)}>
-            <Text style={{ color: Theme.colors.black }}>{choice.choice}</Text>
+            <Text style={{ color: Theme.colors.black }}>{choice.choice.trim()}</Text>
             {isChoiceLoading && index === selectedChoiceIndex ? (
               <ActivityIndicator
                 size='small'

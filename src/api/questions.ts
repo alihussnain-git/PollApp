@@ -14,3 +14,14 @@ export function postChoice(choice: string) {
     payload: {},
   }).then((choices) => choices.data);
 }
+
+export function postQuestion(url: string, question: string, choices: string[]) {
+  return API.post<Question>(url, {
+    payload: {
+      body: {
+        question,
+        choices,
+      },
+    },
+  }).then((questionObj) => questionObj.data);
+}
